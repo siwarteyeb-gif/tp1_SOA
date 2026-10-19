@@ -1,0 +1,36 @@
+  spring:
+    application:
+      name: marque-microservice
+
+    datasource:
+      url: jdbc:mysql://mysqldb:3306/test?useSSL=false&serverTimezone=UTC
+      username: sqlclient
+      password: sqlclient123
+
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+
+    cloud:
+      config:
+        enabled: false
+      discovery:
+        enabled: false
+
+  eureka:
+    client:
+      enabled: false
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
+
+  build:
+    version: 1.0
+
+  author:
+    name: "siwar Marque"
+    email: "siwarteyeb_Marque@gmail.com"
