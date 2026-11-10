@@ -1,19 +1,31 @@
 spring:
   application:
     name: "configserver"
+
   profiles:
-    # active: native
     active: git
+
   cloud:
     config:
       server:
-        # native:
-        #   search-locations: "classpath:/config"
-        #   search-locations: file:///C:/SOA/section6/config-repo
         git:
           uri: https://github.com/siwarteyeb-gif/config-repo.git
           default-label: main
           clone-on-start: true
+        monitor:
+          validation-filter-enabled: false
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 server:
   port: 9999
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

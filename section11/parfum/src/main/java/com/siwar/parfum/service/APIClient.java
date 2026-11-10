@@ -1,11 +1,14 @@
-        package com.siwar.parfum.service;
+package com.siwar.parfum.service;
 
 import com.siwar.parfum.dto.MarqueDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "MARQUE-MICROSERVICE")
+@FeignClient(
+        name = "MARQUE-MICROSERVICE",
+        fallback = MarqueFallback.class
+)
 public interface APIClient {
 
     @GetMapping("api/marques/{marque-code}")

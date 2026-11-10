@@ -1,38 +1,36 @@
-spring:
-  application:
-    name: marque-microservice
+  spring:
+    application:
+      name: marque-microservice
 
-  datasource:
-    url: 'jdbc:h2:mem:marquedb'
+    datasource:
+      url: jdbc:mysql://mysqldb:3306/test?useSSL=false&serverTimezone=UTC
+      username: sqlclient
+      password: sqlclient123
 
-  h2:
-    console:
-      enabled: true
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: update
 
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
+    cloud:
+      config:
+        enabled: false
+      discovery:
+        enabled: false
 
-  cloud:
-    config:
+  eureka:
+    client:
       enabled: false
-    discovery:
-      enabled: false
 
-eureka:
-  client:
-    enabled: false
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+  build:
+    version: 1.0
 
-build:
-  version: 1.0
-
-author:
-  name: "siwar Marque"
-  email: "siwarteyeb_Marque@gmail.com"
+  author:
+    name: "siwar Marque"
+    email: "siwarteyeb_Marque@gmail.com"

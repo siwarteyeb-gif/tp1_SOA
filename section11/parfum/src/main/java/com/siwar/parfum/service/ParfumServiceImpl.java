@@ -1,4 +1,4 @@
-package com.siwar.parfum.service;
+        package com.siwar.parfum.service;
 
 import com.siwar.parfum.dto.APIResponseDto;
 import com.siwar.parfum.dto.MarqueDto;
@@ -24,13 +24,19 @@ public class ParfumServiceImpl implements ParfumService {
         MarqueDto marqueDto =
                 apiClient.getMarqueByCode(parfum.getMarqueCode());
 
+        String marqueName = "NOT AVAILABLE";
+
+        if (marqueDto != null) {
+            marqueName = marqueDto.getMarqueName();
+        }
+
         ParfumDto parfumDto = new ParfumDto(
                 parfum.getIdParfum(),
                 parfum.getNomParfum(),
                 parfum.getPrixParfum(),
                 parfum.getDateCreation(),
                 parfum.getMarqueCode(),
-                marqueDto.getMarqueName()
+                marqueName
         );
 
         APIResponseDto apiResponseDto = new APIResponseDto();

@@ -1,3 +1,4 @@
+
 server:
   port: 8888
 
@@ -17,15 +18,14 @@ spring:
             locator:
               enabled: true
               lower-case-service-id: true
-          routes:
-            - id: r1
-              uri: lb://marque-microservice
-              predicates:
-                - Path=/api/marques/**
-            - id: r2
-              uri: lb://parfum
-              predicates:
-                - Path=/api/parfums/**
+          # Routes are configured in GatewayConfig.java
+
+  # Keycloak JWT Security
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: "http://localhost:8090/realms/master/protocol/openid-connect/certs"
 
 eureka:
   client:
@@ -35,6 +35,15 @@ eureka:
       defaultZone: ${DISCOVERY_SERVICE_URL:http://localhost:8761/eureka}
   instance:
     prefer-ip-address: true
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 2
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
 
 management:
   endpoints:

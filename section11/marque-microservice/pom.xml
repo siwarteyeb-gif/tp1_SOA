@@ -69,11 +69,13 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!-- Spring Cloud Bus avec RabbitMQ -->
+        <!-- Spring Cloud Bus avec RabbitMQ (disabled for Resilience4J TP) -->
+        <!--
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
+        -->
 
         <!-- Lombok -->
         <dependency>
